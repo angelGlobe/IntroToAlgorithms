@@ -9,24 +9,23 @@ def MergeSort(array,start,end):
 def Merge(array,start,halfPoint,end):
     leftSize = halfPoint-start+1
     rightSize = end-halfPoint
-    leftArray = [0]*(leftSize + 1)
-    rightArray = [0]*(rightSize+1)
+    leftArray = [0]*(leftSize)
+    rightArray = [0]*(rightSize)
 
     
     for i in range(0,leftSize):
         leftArray[i] = array[start+i]
     for i in range(0,rightSize):
         rightArray[i] = array[halfPoint+i+1]
-    leftArray[leftSize] = None
-    rightArray[rightSize] = None
+
 
     indexL = 0
     indexR = 0
     for k in range(start,end+1):
-        if(leftArray[indexL] == None):
+        if(indexL == leftSize):
             array[k] = rightArray[indexR]
             indexR+=1
-        elif(rightArray[indexR] == None):
+        elif(indexR == rightSize):
             array[k] = leftArray[indexL]
             indexL+=1
         elif(leftArray[indexL] <= rightArray[indexR]):
